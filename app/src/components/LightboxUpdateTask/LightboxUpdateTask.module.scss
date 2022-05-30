@@ -1,0 +1,67 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/commonParts";
+
+.modalForm {
+  @extend %modalWidth;
+
+  position: relative;
+  z-index: 1;
+
+  .modalForm_description > div {
+    padding: 0;
+  }
+
+  .modalForm_element {
+    @extend %modalElement;
+
+    margin-bottom: 15px;
+  }
+
+  .modalForm_errorText {
+    @extend %formError;
+    margin-bottom: 15px;
+  }
+
+  .modalForm_submit {
+    @extend %submitButton;
+  }
+}
+
+.taskContent {
+  @extend %modalWidth;
+
+  .taskContent__description {
+    font-size: $textSizeSmall;
+    text-align: center;
+  }
+
+  .taskContent__people {
+    @include dflex();
+
+    margin: 15px 0 35px;
+    font-size: $textSizeSmall;
+    color: $darkGrey;
+  }
+
+  .taskContent__avatar {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid $darkGrey;
+    box-shadow: $boxShadow;
+    overflow: hidden;
+  }
+
+  .taskContent__button {
+    @extend %simpleButtonStyles;
+
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    font-size: $textSizeSmall;
+    color: $whiteColor;
+    background-color: $primary;
+  }
+}

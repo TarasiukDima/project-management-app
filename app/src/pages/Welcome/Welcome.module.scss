@@ -1,0 +1,235 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+@import "$assets/scss/commonParts";
+
+.welcomePage {
+  text-align: center;
+
+  .welcomePage_leftImg,
+  .welcomePage_rightImg {
+    display: none;
+    position: absolute;
+    top: 22vh;
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+  }
+
+  .welcomePage_leftImg {
+    left: 10px;
+  }
+
+  .welcomePage_rightImg {
+    right: 10px;
+  }
+
+  .welcomePage_title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: $whiteColor;
+  }
+
+  .welcomePage_youtube {
+    @include dflex();
+
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    border: none;
+    color: $whiteColor;
+    background-color: $black;
+  }
+
+  .welcomePage_text {
+    width: 100%;
+    max-width: 630px;
+    margin: 31px auto 0;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.3;
+    color: $whiteColor;
+  }
+
+  .welcomePage_button {
+    @extend %buttonFormStyles;
+
+    width: fit-content;
+    margin: 30px auto 0;
+    text-transform: uppercase;
+  }
+}
+
+.modalWrapper {
+  max-width: 900px;
+  border: 2px solid $black;
+  box-shadow: 24;
+
+  .developerList {
+    @include dflex(center, stretch);
+
+    flex-wrap: wrap;
+  }
+
+  .developerList__item {
+    @include dflex();
+
+    flex-direction: column;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 5px 15px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: $boxShadow;
+  }
+
+  .developerList__item_photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .developerList__item_name {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-weight: bold;
+    font-size: $textSize;
+    color: $primary;
+    text-decoration: none;
+    padding-left: 35px;
+
+    &:before {
+      @include psevdo("", absolute, 50%);
+
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background: url("$assets/svg/githubIcon.svg") no-repeat center center;
+      background-size: contain;
+      transform: translateY(-50%);
+    }
+  }
+
+  .developers__item_roleTitle {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: $textSizeSmall;
+  }
+
+  .developers__item_role {
+    font-size: $textSizeSmall;
+  }
+
+  .developersDescription {
+    margin-bottom: 30px;
+    font-size: $textSizeSmall;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .welcomePage {
+    .welcomePage_title {
+      font-size: 50px;
+    }
+
+    .welcomePage_youtube {
+      max-width: 500px;
+      height: 250px;
+
+      svg {
+        font-size: 110px;
+      }
+    }
+
+    .welcomePage_text {
+      font-size: 28px;
+    }
+  }
+
+  .modalWrapper {
+    .developerList__item {
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 10px 20px;
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  .welcomePage {
+    .welcomePage_title {
+      font-size: 72px;
+      line-height: 2;
+    }
+
+    .welcomePage_leftImg,
+    .welcomePage_rightImg {
+      display: block;
+    }
+
+    .welcomePage_youtube {
+      max-width: 600px;
+      height: 300px;
+    }
+
+    .welcomePage_text {
+      font-size: 32px;
+      line-height: 1.5;
+    }
+  }
+
+  .modalWrapper {
+    .developerList__item_photo {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+
+    .developersDescription {
+      margin-top: 30px;
+    }
+  }
+}
+
+// > 1200px
+@include lg_display_start() {
+  .welcomePage {
+    .welcomePage_leftImg,
+    .welcomePage_rightImg {
+      width: 250px;
+      height: 250px;
+    }
+
+    .welcomePage_leftImg {
+      left: 50px;
+    }
+
+    .welcomePage_rightImg {
+      right: 50px;
+    }
+  }
+}
+
+// > 1400px
+@media screen and (min-width: 1400px) {
+  .welcomePage {
+    .welcomePage_leftImg,
+    .welcomePage_rightImg {
+      width: 300px;
+      height: 300px;
+    }
+
+    .welcomePage_leftImg {
+      left: 100px;
+    }
+
+    .welcomePage_rightImg {
+      right: 100px;
+    }
+  }
+}

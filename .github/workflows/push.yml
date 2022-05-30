@@ -1,0 +1,54 @@
+name: Push check
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+    branches: [develop]
+
+env:
+  working-directory: ./app
+  build_directory: ./app/build
+
+jobs:
+  deploy_project:
+    name: Deploy app
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: ${{env.working-directory}}
+    strategy:
+      matrix:
+        node_version: [16.x]
+    steps:
+      - name: Run actions/checkout@v3
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{matrix.node_version}}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node_version}}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Deploy app
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.build_directory }}
+          commit_message: ${{ github.event.head_commit.message }}
+
+      - name: Show message
+        run: echo "Deploy successfully!"

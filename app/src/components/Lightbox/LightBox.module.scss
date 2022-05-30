@@ -1,0 +1,48 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+
+.lightBox {
+  @include dflex();
+
+  height: 100%;
+  padding: 10px 0;
+  overflow-y: auto;
+
+  &__wrapper {
+    position: relative;
+    padding: 20px 10px;
+    margin: auto;
+    width: 98%;
+    max-width: 500px;
+    background-color: $whiteColor;
+    border-radius: $borderRadiusMin;
+  }
+
+  button.lightBox__wrapper_closeButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  &__wrapper_title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: $pageTitleTextMobile;
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .lightBox {
+    &__wrapper {
+      padding: 45px 37px 37px;
+      max-width: auto;
+    }
+
+    &__wrapper_title {
+      font-size: $pageTitleText;
+    }
+  }
+}

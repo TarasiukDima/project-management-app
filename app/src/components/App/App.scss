@@ -1,0 +1,31 @@
+@import "$assets/scss/variables";
+
+:root {
+  --screenOverflowY: initial;
+  --screenOverflowX: initial;
+  --heightScreen: auto;
+}
+
+body,
+html,
+#root {
+  height: var(--heightScreen);
+  overflow-x: var(--screenOverflowX);
+  overflow-y: var(--screenOverflowY);
+  word-wrap: break-word;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  background-color: $black;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $borderRadiusMin;
+  background-color: $orange;
+}

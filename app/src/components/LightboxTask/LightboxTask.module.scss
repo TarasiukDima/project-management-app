@@ -1,0 +1,28 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/commonParts";
+
+.modalForm {
+  @extend %modalWidth;
+
+  position: relative;
+  z-index: 1;
+
+  .modalForm_description > div {
+    padding: 0;
+  }
+
+  .modalForm_element {
+    @extend %modalElement;
+
+    margin-bottom: 15px;
+  }
+
+  .modalForm_errorText {
+    @extend %formError;
+    margin-bottom: 15px;
+  }
+
+  .modalForm_submit {
+    @extend %submitButton;
+  }
+}

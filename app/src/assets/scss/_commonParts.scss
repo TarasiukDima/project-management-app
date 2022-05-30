@@ -1,0 +1,185 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+
+%commonHeadItemStyles {
+  box-shadow: $boxShadow;
+  border-radius: $borderRadiusMin;
+  color: $black;
+  background: $whiteColor;
+
+  @include sm_tablet_start() {
+    border-radius: $borderRadiusBig;
+  }
+}
+
+%pageTitle {
+  font-size: $pageTitleTextMobile;
+  text-align: center;
+
+  @include sm_tablet_start() {
+    font-size: $pageTitleText;
+  }
+}
+
+%modalWidth {
+  width: 100%;
+
+  @include sm_tablet_start() {
+    max-width: $modalFormWidth;
+  }
+}
+
+%modalElement {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: $borderRadiusMin;
+  background-color: $whiteColor;
+
+  label {
+    font-weight: bold;
+  }
+  textarea,
+  input {
+    padding: 15px;
+    font-size: $textSizeMobile;
+    line-height: 1.3;
+    border-radius: $borderRadiusMin;
+
+
+    @include sm_tablet_start() {
+      font-size: $textSize;
+    }
+  }
+
+  fieldset {
+    border-radius: $borderRadiusMin;
+    border: 2px solid transparentize($black, 0.8);
+    box-shadow: $boxShadow;
+  }
+
+  &.error {
+    margin-bottom: 0;
+
+    fieldset {
+      border-color: $red;
+    }
+  }
+}
+
+%buttonFormStyles {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: $textSizeMobile;
+  text-align: center;
+  border-radius: $borderRadiusMin;
+  color: $whiteColor;
+  background-color: $primary;
+  cursor: pointer;
+  transition: $transitionTime;
+  text-decoration: none;
+
+  &:not(:disabled):active {
+    box-shadow: inset 0 0 10px transparentize($black, 0.5);
+  }
+
+  &:not(.disabled):hover {
+    background-color: $green;
+  }
+
+  @include sm_tablet_start() {
+    font-size: $textSize;
+  }
+}
+
+%simpleButtonStyles {
+  transition: background-color $transitionTime, color $transitionTime, box-shadow $transitionTime;
+
+  &:not(.disabled):hover {
+    color: $whiteColor;
+    background-color: $green;
+  }
+
+  &:not(.disabled):active {
+    box-shadow: inset 0 0 10px $whiteColor;
+  }
+
+  &.disabled {
+    color: $whiteColor;
+    background-color: $darkGrey;
+    cursor: default;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+%simpleIconButtonStyles {
+  color: $black;
+  transition: color $transitionTime;
+
+  &:not(:disabled):hover {
+    color: $green;
+  }
+
+  &:disabled {
+    color: $darkGrey;
+  }
+}
+
+%submitButton {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 0;
+  text-align: center;
+  border-radius: $borderRadiusMin;
+
+  input {
+    font-weight: bold;
+    font-size: $textSizeMobile;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-radius: inherit;
+    height: auto;
+    cursor: inherit;
+    padding: 13px;
+    color: $whiteColor;
+    background-color: $primary;
+    transition: $transitionTime;
+    cursor: pointer;
+
+    &:not(:disabled):active {
+      box-shadow: inset 0 0 10px transparentize($black, 0.5);
+    }
+
+    &:not(:disabled):hover {
+      background-color: $green;
+    }
+
+    &:disabled {
+      background-color: darken($lightGrey, 5);
+      color: $black;
+    }
+  }
+
+  @include sm_tablet_start() {
+    font-size: $textSize;
+  }
+}
+
+%formError {
+  position: relative;
+  z-index: 1;
+  margin: 5px 0 15px;
+  font-size: $textSizeMobile;
+  color: $red;
+
+  &:before {
+    content: "⚠ ";
+    display: inline;
+  }
+}
+/* common parts styles end */

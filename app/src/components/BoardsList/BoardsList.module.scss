@@ -1,0 +1,218 @@
+@import '$assets/scss/variables';
+@import '$assets/scss/mixins';
+@import '$assets/scss/commonParts';
+
+.boardsList {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0;
+
+  .boardsList__item {
+    @extend %commonHeadItemStyles;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 37px;
+    list-style-type: none;
+    overflow: hidden;
+  }
+  .boardsList__item_spinner {
+    margin-top: 5px;
+  }
+
+  .spinner__item {
+    @include dflex();
+  }
+
+  .boardsList__item_content {
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    min-height: 145px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: $black;
+
+    &:before {
+      @include psevdo('', absolute, 0);
+
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparentize($whiteColor, 0.8);
+    }
+  }
+
+  .boardsList__item_img {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    filter: blur(4px);
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .boardsList__item_title {
+    font-weight: bold;
+    font-size: $bigTextMiddleSize;
+    line-height: 1.5;
+    color: $whiteColor;
+  }
+
+  .boardsList__item_description {
+    font-size: $textSizeSmall;
+    color: $whiteColor;
+  }
+
+  .boardsList__item_actionsWrapper {
+    position: relative;
+    z-index: 1;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 0 14px 14px;
+
+    &:before {
+      @include psevdo('', absolute, -12px);
+
+      left: 7px;
+      width: calc(100% - 14px);
+      height: 5px;
+      background-color: $black;
+    }
+  }
+
+  .boardsList__item_link {
+    @extend %simpleButtonStyles;
+
+    padding: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: $black;
+    transition: color $transitionTime, box-shadow $transitionTime, background-color $transitionTime;
+  }
+
+  .boardsList__item_button {
+    @extend %simpleIconButtonStyles;
+  }
+
+  .boardsList__item_addButton {
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 0;
+    color: $black;
+    transition: background-color $transitionTime;
+
+    span {
+      display: block;
+      width: 100%;
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      background-color: $lightGrey;
+      cursor: default;
+    }
+
+    &:not(.disabled):active {
+      box-shadow: inset 0 0 20px $whiteColor;
+    }
+
+    &:not(.disabled):hover {
+      color: $whiteColor;
+      background-color: $green;
+    }
+  }
+
+  .boardsList__item_addButtonText {
+    font-weight: 600;
+    font-size: $bigTextMiddleSize;
+    line-height: 1.5;
+    transition: color $transitionTime;
+  }
+
+  .boardsList__item_buttonIconWrapper {
+    @include dflex();
+
+    svg {
+      width: 30px;
+      height: 30px;
+      transition: $transitionTime;
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .boardsList {
+    justify-content: center;
+    max-width: 100%;
+
+    .boardsList__item {
+      width: 300px;
+      min-height: 300px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .boardsList__item_content {
+      padding: 15px;
+    }
+
+    .boardsList__item_title {
+      font-size: $bigTextSize;
+    }
+
+    .boardsList__item_description {
+      font-size: $textSize;
+    }
+
+    .boardsList__item_actionsWrapper {
+      margin-top: 40px;
+    }
+
+    .boardsList__item_addButtonText {
+      font-size: $bigTextSize;
+    }
+
+    .boardsList__item_buttonIconWrapper {
+      svg {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  .boardsList {
+    justify-content: flex-start;
+
+    .boardsList__item {
+      width: 32%;
+      margin-left: 0;
+      margin-right: 0;
+
+      &:not(:nth-child(3n)) {
+        margin-right: 2%;
+      }
+    }
+  }
+}
+
+// > 1200px
+@include lg_display_start() {
+  .boardsList {
+    .boardsList__item {
+      width: 30%;
+
+      &:not(:nth-child(3n)) {
+        margin-right: 4.5%;
+      }
+    }
+  }
+}

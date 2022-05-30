@@ -1,0 +1,48 @@
+/* Основные переменные цсс. */
+
+// В colors помещаем цвета
+/* common colors start */
+$withOutColor: transparent;
+$whiteColor: #fff;
+$lightGrey: #efefef;
+$darkGrey: #a9a9a9;
+$black: #001a33;
+$primary: #1976d2;
+$secondary: #fe6b8b;
+$red: red;
+$green: green;
+$orange: #ef9401;
+$lightBlue: #6dc6f0;
+$pageGradient: linear-gradient(45deg, #f8a078, #6dc6f0);
+$boxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+/* common colors end */
+
+/* common values start */
+$wrapper-max-width: 1152px;
+$transitionTime: 0.3s;
+$borderRadiusMin: 10px;
+$borderRadiusBig: 28px;
+$pageTitleTextMobile: 30px;
+$pageTitleTextBig: 40px;
+$pageTitleText: 40px;
+$bigTextMobileSize: 20px;
+$bigTextMiddleSize: 24px;
+$bigTextSize: 28px;
+$textSizeSmall: 16px;
+$textSizeMobile: 18px;
+$textSize: 20px;
+$oneBoardPageOffset: max(calc(calc(100vw - $wrapper-max-width) / 2), 20px);
+$modalFormWidth: 500px;
+$formAuthSize: 450px;
+$burgerSize: 30px;
+/* common values end */
+
+// scroll
+$scrollBarItemThumb: #c4c4c4;
+$scrollBarItemBg: #d9d9d9;
+
+// boards
+$columnBg: #f4f5f7;
+
+// tasks
+$headTaskSize: 30px;

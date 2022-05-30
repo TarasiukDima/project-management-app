@@ -1,0 +1,214 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+@import "$assets/scss/commonParts";
+
+.profile {
+  &__loader {
+    margin-top: 20px;
+  }
+
+  &__title {
+    @extend %pageTitle;
+  }
+
+  .profile__content {
+    flex-direction: column;
+    align-items: center;
+
+    &_user {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    &_img {
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .profile__content_buttons {
+      flex-direction: column;
+      width: 100%;
+
+      .profile__content_buttonDelete {
+        background-color: $red;
+      }
+
+      .profile__content_buttonChange {
+        background-color: $primary;
+      }
+
+      .profile__content_buttonDelete,
+      .profile__content_buttonChange {
+        width: 100%;
+        margin-top: 10px;
+        padding: 13px 10px;
+        border-radius: $borderRadiusMin;
+        border: none;
+        color: $whiteColor;
+        transition: background-color $transitionTime, box-shadow $transitionTime;
+
+        &:hover {
+          background-color: $green;
+        }
+
+        &:active {
+          box-shadow: inset 0 0 10px transparentize($black, 0.5);
+        }
+      }
+    }
+  }
+
+  .profile__form_wrapper {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 30px;
+  }
+
+  .profile__form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    border-radius: $borderRadiusMin;
+    background-color: $whiteColor;
+
+    &_title {
+      font-weight: bold;
+      font-size: $textSize;
+      text-align: center;
+    }
+
+    .profile__form_input {
+      @extend %modalElement;
+    }
+
+    .formErrorText {
+      @extend %formError;
+    }
+
+    &_submit {
+      @extend %submitButton;
+    }
+  }
+}
+
+.avatarWrapper {
+  width: 95%;
+  max-width: 600px;
+
+  .photosList {
+    @include dflex(center, stretch);
+
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .photosList__item {
+      width: 48%;
+      height: 100px;
+      margin: 0 1% 15px;
+      list-style-type: none;
+    }
+
+    .photosList__item_button {
+      width: 100%;
+      height: 100%;
+      box-shadow: $boxShadow;
+      transition: transform $transitionTime, background-color $transitionTime;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      &.active {
+        background-color: $orange;
+      }
+
+      &.chosen {
+        background-color: $green;
+      }
+    }
+  }
+
+  .photosList__changeButton {
+    @extend %buttonFormStyles;
+
+    &:not(:disabled):hover {
+      background-color: $secondary;
+    }
+
+    &:disabled {
+      background-color: darken($lightGrey, 5);
+      color: $black;
+    }
+  }
+}
+
+// > 600
+@include sm_tablet_start() {
+  .profile {
+    .profile__content {
+      .profile__content_buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .profile__content_buttonDelete,
+        .profile__content_buttonChange {
+          width: 49%;
+        }
+      }
+    }
+
+    .profile__form {
+      padding: 20px;
+    }
+  }
+
+  .avatarWrapper {
+    .photosList {
+      .photosList__item {
+        width: 23%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+// > 900
+@include md_laptop_start() {
+  .profile {
+    &__loader {
+      margin-top: 50px;
+    }
+
+    .profile__content {
+      flex-direction: row;
+      align-items: flex-end;
+
+      .profile__content_buttons {
+        margin-top: 20px;
+      }
+    }
+
+    .profile__form_wrapper {
+      margin: 0 0 0 30px;
+    }
+
+    .profile__form {
+      &_title {
+        font-size: $textSize;
+      }
+    }
+  }
+}

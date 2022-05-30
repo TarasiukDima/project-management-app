@@ -1,0 +1,241 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+
+.header {
+  flex-shrink: 0;
+  color: $black;
+  background-color: $whiteColor;
+  transition: background-color $transitionTime;
+
+  .header__wrapper {
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: center;
+
+    a {
+      line-height: 1;
+    }
+  }
+
+  .header__heading {
+    width: 100%;
+    text-transform: uppercase;
+    color: $black;
+    text-align: center;
+
+    a {
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1;
+    }
+  }
+
+  .header__logo {
+    width: auto;
+    height: 20px;
+  }
+
+  .header__nav {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -150%;
+    transition: $transitionTime;
+
+    &:before {
+      @include psevdo();
+
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparentize($whiteColor, 0.5);
+      filter: blur(2px);
+    }
+
+    &.active {
+      left: 0;
+      z-index: 10;
+    }
+  }
+
+  .header__nav_list {
+    width: max(250px, 50%);
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: $black;
+  }
+
+  .header__nav_listItem {
+    justify-content: center;
+    border-top: 1px solid transparentize($black, 0.8);
+    background-color: $whiteColor;
+
+    a,
+    button {
+      transition: color $transitionTime ease;
+
+      svg {
+        transition: fill $transitionTime ease;
+      }
+    }
+  }
+
+  .header__signOut,
+  .header__signOut  {
+    transition: color $transitionTime ease;
+
+    svg {
+      transition: fill $transitionTime ease;
+    }
+  }
+
+  .header__burger {
+    display: block;
+    width: $burgerSize;
+    height: $burgerSize;
+    margin-left: 10px;
+    padding: 0;
+    border: none;
+    background-color: $withOutColor;
+    overflow: hidden;
+
+    span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: calc($burgerSize / 7);
+      border-radius: $borderRadiusMin;
+      background-color: $black;
+      overflow: visible;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        background-color: $black;
+      }
+
+      &:before {
+        top: calc($burgerSize / -3);
+        transition: calc($transitionTime * 2);
+      }
+
+      &:after {
+        bottom: calc($burgerSize / -3);
+        transition: $transitionTime;
+      }
+    }
+
+    &.active {
+      span {
+        background: $withOutColor;
+
+        &:before {
+          transform: translateY(calc($burgerSize / 3)) rotate(-405deg);
+        }
+
+        &:after {
+          transform: translateY(calc($burgerSize / -3)) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  &.active_header {
+    color: $whiteColor;
+    background-color: $primary;
+
+    .header__heading {
+      color: $whiteColor;
+    }
+
+    .header__nav_listItem {
+      color: $black;
+    }
+
+    .header__burger span,
+    .header__burger span:before,
+    .header__burger span:after {
+      background-color: $whiteColor;
+    }
+
+    .header__burger.active span {
+      background-color: $withOutColor;
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .header {
+    .header__wrapper a {
+      line-height: 1.3;
+    }
+
+    .header__heading {
+      width: fit-content;
+      margin-right: auto;
+
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  .header {
+    .header__nav {
+      position: static;
+      width: fit-content;
+      height: fit-content;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    .header__nav_list {
+      flex-direction: row;
+      width: fit-content;
+      height: fit-content;
+      background-color: $withOutColor;
+    }
+
+    .header__nav_listItem {
+      justify-content: center;
+      width: fit-content;
+      padding: 0;
+      border-top: none;
+      background-color: $withOutColor;
+    }
+
+    .header__burger {
+      display: none;
+    }
+
+    &.active_header {
+      .header__nav_listItem {
+        color: $whiteColor;
+      }
+    }
+  }
+}
+
+// > 1200px
+@include lg_display_start() {
+}

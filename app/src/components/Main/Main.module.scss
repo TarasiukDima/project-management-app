@@ -1,0 +1,13 @@
+@import "$assets/scss/mixins";
+@import "$assets/scss/variables";
+
+.main {
+  @include dflex(flex-start, stretch);
+
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: $lightBlue;
+  background: $pageGradient;
+}

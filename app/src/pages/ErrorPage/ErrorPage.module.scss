@@ -1,0 +1,33 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/commonParts";
+
+.errorPage {
+  text-align: center;
+
+  .errorPage__title {
+    @extend %pageTitle;
+  }
+  .errorPage__text {
+    font-size: $textSizeMobile;
+  }
+
+  .errorPage_link {
+    @extend %buttonFormStyles;
+
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .errorPage {
+    .error_heading {
+      margin-bottom: 30px;
+    }
+
+    .errorPage__text {
+      font-size: $textSize;
+    }
+  }
+}

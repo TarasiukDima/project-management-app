@@ -1,0 +1,12 @@
+@import "$assets/scss/mixins";
+
+.page_all_space {
+  padding: 20px 0;
+  flex-grow: 1;
+}
+
+@include sm_tablet_start() {
+  .page_all_space {
+    padding: 37px 0;
+  }
+}

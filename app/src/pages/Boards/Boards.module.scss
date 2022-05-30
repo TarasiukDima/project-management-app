@@ -1,0 +1,110 @@
+@import '$assets/scss/variables';
+@import '$assets/scss/mixins';
+@import '$assets/scss/commonParts';
+
+.boards {
+  .boards__head {
+    &_name {
+      @include dflex(space-between);
+      @extend %commonHeadItemStyles;
+
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: $bigTextMobileSize;
+      padding: 10px 20px;
+      line-height: 1.5;
+
+      svg {
+        margin-left: 5px;
+      }
+    }
+
+    form.boards__head_form {
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+      margin-left: 0;
+
+      button {
+        padding: 0;
+      }
+    }
+
+    &_search {
+      @extend %commonHeadItemStyles;
+
+      padding: 10px 5px 10px 20px;
+      color: $black;
+
+      input {
+        height: auto;
+        padding: 0;
+        font-weight: bold;
+        font-size: $bigTextMobileSize;
+        line-height: 1.5;
+      }
+    }
+  }
+  p.boards_search_message {
+    font-weight: bold;
+    font-size: $bigTextMiddleSize;
+  }
+
+  .boards__loader {
+    margin-top: 20px;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .boards {
+    .boards__head {
+      &_name {
+        font-size: $bigTextMiddleSize;
+        margin-bottom: 20px;
+      }
+
+      &_search {
+        input {
+          font-size: $bigTextMiddleSize;
+        }
+      }
+    }
+    p.boards_search_message {
+      font-size: $bigTextSize;
+    }
+
+    .boards__loader {
+      margin-top: 50px;
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  .boards {
+    .boards__head {
+      &_name {
+        width: fit-content;
+        font-size: $bigTextSize;
+        padding: 14px 34px;
+      }
+
+      form.boards__head_form {
+        margin-left: 49px;
+
+        button {
+          padding: 5px;
+        }
+      }
+
+      &_search {
+        padding: 14px 34px;
+
+        input {
+          font-size: $bigTextSize;
+        }
+      }
+    }
+  }
+}

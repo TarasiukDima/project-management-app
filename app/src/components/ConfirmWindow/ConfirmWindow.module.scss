@@ -1,0 +1,49 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+
+.confirmWindow {
+  .confirmWindow_title {
+    font-size: $textSize;
+    text-align: center;
+  }
+
+  .confirmWindow_buttonsWrapper {
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .confirmWindow_red,
+    .confirmWindow_green {
+      width: 100%;
+      margin: 5px;
+      color: $whiteColor;
+    }
+  }
+
+  .confirmWindow_red {
+    background-color: $red;
+
+    &:hover {
+      background-color: darken($red, 15);
+    }
+  }
+  .confirmWindow_green {
+    background-color: $green;
+
+    &:hover {
+      background-color: darken($green, 15);
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .confirmWindow {
+    .confirmWindow_buttonsWrapper {
+      .confirmWindow_red,
+      .confirmWindow_green {
+        width: 49%;
+        margin: 0;
+      }
+    }
+  }
+}

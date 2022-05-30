@@ -1,0 +1,103 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+
+.one_board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  & > div {
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+
+    flex-grow: 1;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: $oneBoardPageOffset;
+    padding-right: $oneBoardPageOffset;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  &__title {
+    @include dflex(space-between);
+
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 100%;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: $bigTextMobileSize;
+    line-height: 1.5;
+    box-shadow: $boxShadow;
+    border-radius: $borderRadiusMin;
+    color: $black;
+    background-color: $whiteColor;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    &_img {
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      z-index: -1;
+      display: block;
+      width: 110%;
+      height: 110%;
+      filter: blur(4px);
+
+      &:before {
+        @include psevdo("", absolute, 0);
+
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-color: transparentize($whiteColor, 0.3);
+      }
+    }
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .one_board {
+    & > div {
+      padding-top: 37px;
+      padding-bottom: 37px;
+    }
+
+    &__title {
+      width: fit-content;
+      min-width: 29%;
+      max-width: 100%;
+      font-size: $bigTextMiddleSize;
+      border-radius: $borderRadiusBig;
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  .one_board {
+    &__title {
+      padding: 14px 34px;
+      font-size: $bigTextSize;
+    }
+  }
+}

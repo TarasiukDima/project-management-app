@@ -1,0 +1,32 @@
+@import "$assets/scss/mixins";
+@import "$assets/scss/variables";
+
+.languageToggler {
+  button.languageToggler__button {
+    min-width: 50px;
+    padding: 5px;
+    line-height: 1.2;
+    border-color: $black;
+    color: $black;
+    background-color: $whiteColor;
+    transition: background-color $transitionTime, color $transitionTime;
+
+    &.active {
+      color: $whiteColor;
+      background-color: $primary;
+    }
+    &:hover {
+      color: $whiteColor;
+      background-color: $orange;
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .languageToggler button.languageToggler__button {
+    min-width: 50px;
+    padding: 5px;
+    line-height: 1.4;
+  }
+}

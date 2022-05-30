@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "$assets/*": ["./assets/*"],
+      "$components/*": ["./components/*"],
+      "$pages/*": ["./pages/*"],
+      "$translations/*": ["./translations/*"],
+      "$general/*": ["./general/*"],
+      "$settings/*": ["./settings/*"],
+      "$utils/*": ["./utils/*"],
+      "$store/*": ["./store/*"],
+      "$types/*": ["./types/*"],
+      "$services/*": ["./services/*"]
+    }
+  }
+}

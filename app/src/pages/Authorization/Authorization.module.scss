@@ -1,0 +1,60 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+@import "$assets/scss/commonParts";
+
+.authPage {
+  .authPage__title {
+    @extend %pageTitle;
+  }
+
+  .authPage__loader {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .authForm {
+    width: 100%;
+    max-width: $formAuthSize;
+    margin: 0 auto;
+    padding: 20px 10px;
+    border-radius: $borderRadiusMin;
+    background-color: $whiteColor;
+  }
+
+  .authForm_element {
+    @extend %modalElement;
+  }
+
+  .authForm_errorText {
+    @extend %formError;
+  }
+
+  .authForm__text {
+    text-align: center;
+
+    .authForm__text_linkToChangeSortOfAuth {
+      display: inline-block;
+      margin-left: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color $transitionTime;
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+
+  .authForm_submit {
+    @extend %submitButton;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  .authPage {
+    .authForm {
+      padding: 20px;
+    }
+  }
+}

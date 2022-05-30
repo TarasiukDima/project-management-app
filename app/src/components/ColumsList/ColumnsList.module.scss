@@ -1,0 +1,217 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+@import "$assets/scss/commonParts";
+
+div.columnsList,
+ul.columnsList {
+  @include dflex(flex-start, flex-start);
+
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  padding: 0;
+  overflow-y: hidden;
+
+  .columnsList__item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: stretch;
+    flex-shrink: 0;
+    width: 280px;
+    max-height: calc(100% - 5px);
+    padding: 10px;
+    box-shadow: $boxShadow;
+    border-radius: $borderRadiusMin;
+    color: $black;
+    background-color: $columnBg;
+    list-style-type: none;
+    overflow: hidden;
+
+    & ~ .columnsList__item,
+    & ~ .columnsList__itemButton {
+      margin-left: 10px;
+    }
+  }
+
+  .columnsList__item_title {
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: $bigTextMiddleSize;
+    line-height: 1.2;
+    color: $black;
+    word-wrap: break-word;
+    cursor: pointer;
+  }
+
+  .columnsList__item_rename {
+    @include dflex(flex-start, stretch);
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .columnsList__item_form {
+      width: 70%;
+    }
+    &_input {
+      width: 100%;
+      padding: 2px 5px;
+      font-size: $textSizeSmall;
+      border: 1px solid transparentize($black, 0.5);
+      border-radius: $borderRadiusMin 0 0 $borderRadiusMin;
+      line-height: 1.5;
+      color: $black;
+      background-color: $whiteColor;
+    }
+
+    &_buttons {
+      width: 30%;
+      border-radius: 0 $borderRadiusMin $borderRadiusMin 0;
+    }
+
+    &_accept,
+    &_cancel {
+      min-width: auto;
+      width: 50%;
+      margin: 0;
+
+      svg {
+        fill: $whiteColor;
+      }
+    }
+
+    &_accept {
+      background-color: $green;
+      border-radius: 0;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &_cancel {
+      background-color: $red;
+    }
+  }
+
+  .columnsList__item_renameErrorText {
+    @extend %formError;
+
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
+
+  .columnsList__buttonsWrapper {
+    width: 100%;
+    @include dflex(space-between, center);
+  }
+
+  .columnsList__item_addTaskButton {
+    @extend %simpleButtonStyles;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    color: $black;
+    background-color: $lightGrey;
+  }
+
+  .columnList_item_delete_button {
+    @extend %simpleIconButtonStyles;
+  }
+
+  .columnsList__itemButton {
+    width: max-content;
+    min-width: 335px;
+    padding: 0;
+  }
+
+  .columnsList__item_addButton {
+    @extend %commonHeadItemStyles;
+
+    padding: 20px;
+    font-weight: bold;
+    font-size: $bigTextMobileSize;
+    line-height: 1.5;
+    color: $black;
+
+    &.disabled {
+      opacity: 0.6;
+      background-color: $lightGrey;
+      cursor: default;
+    }
+
+    &:not(.disabled):active {
+      box-shadow: inset 0 0 20px $whiteColor;
+    }
+
+    &:not(.disabled):hover {
+      color: $whiteColor;
+      background-color: $green;
+    }
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  div.columnsList,
+  ul.columnsList {
+    .columnsList__item {
+      width: 335px;
+      padding: 12px 15px;
+      border-radius: $borderRadiusBig;
+
+      & ~ .columnsList__item,
+      & ~ .columnsList__itemButton {
+        margin-left: 30px;
+      }
+    }
+
+    .columnsList__item_rename {
+      &_input {
+        font-size: $textSizeMobile;
+      }
+    }
+
+    .columnsList__item_addTaskButton {
+      font-size: $textSizeSmall;
+    }
+
+    .columnsList__item_addButton {
+      font-size: $bigTextMiddleSize;
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  div.columnsList,
+  ul.columnsList {
+    .columnsList__item_rename {
+      &_input {
+        font-size: $textSize;
+      }
+    }
+
+    .columnsList__item_addButton {
+      font-size: $bigTextSize;
+    }
+  }
+}
+
+// > 1200px
+@include lg_display_start() {
+  div.columnsList,
+  ul.columnsList {
+    .columnsList__item {
+      & ~ .columnsList__item,
+      & ~ .columnsList__itemButton {
+        margin-left: 53px;
+      }
+    }
+
+    .columnsList__item_title {
+      font-size: $bigTextSize;
+    }
+  }
+}

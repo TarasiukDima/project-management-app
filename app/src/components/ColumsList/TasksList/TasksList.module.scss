@@ -1,0 +1,141 @@
+@import "$assets/scss/variables";
+@import "$assets/scss/mixins";
+@import "$assets/scss/commonParts";
+
+ul.tasksList {
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 0;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+  }
+
+  .tasksList__item {
+    position: relative;
+    z-index: 1;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px 10px 2px;
+    box-shadow: $boxShadow;
+    border-radius: $borderRadiusMin;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    &:before {
+      @include psevdo("", absolute, 5px);
+
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 120%;
+      box-shadow: inset 0 2px 5px transparentize($black, 0.6);
+      background-color: $whiteColor;
+    }
+
+    & ~ .tasksList__item {
+      margin-top: 10px;
+    }
+
+    span {
+      display: block;
+    }
+
+    &_title {
+      width: 100%;
+      font-size: $textSizeMobile;
+      line-height: 1.2;
+    }
+
+    &_description {
+      width: 100%;
+      font-size: $textSizeSmall;
+      line-height: 1.3;
+      color: $darkGrey;
+    }
+
+    &_user {
+      font-size: 14px;
+    }
+  }
+
+  .tasksList__item_buttonsWrapper {
+    width: 100%;
+  }
+
+  .tasksList__item_openButton {
+    @extend %simpleButtonStyles;
+
+    padding: 3px 5px;
+    font-size: 14px;
+    line-height: 1;
+    margin-right: auto;
+    color: $black;
+  }
+
+  .tasksList__item_button {
+    @extend %simpleIconButtonStyles;
+  }
+}
+
+// > 600px
+@include sm_tablet_start() {
+  ul.tasksList {
+    margin-top: 10px;
+
+    .tasksList__item {
+      padding-top: 15px;
+      border-radius: calc($borderRadiusBig / 1.5);
+
+      &:before {
+        top: 10px;
+      }
+    }
+  }
+}
+
+// > 900px
+@include md_laptop_start() {
+  ul.tasksList {
+    .tasksList__item {
+      padding-top: 20px;
+      border-radius: $borderRadiusBig;
+
+      &:before {
+        top: 18px;
+      }
+
+      &_title {
+        font-size: $bigTextMobileSize;
+      }
+
+      &_description {
+        font-size: $textSizeMobile;
+      }
+    }
+  }
+}
+
+// > 1200px
+@include lg_display_start() {
+  ul.tasksList {
+    margin-top: 15px;
+
+    .tasksList__item {
+      padding: calc($headTaskSize + 10px) 14px 18px;
+
+      &:before {
+        top: $headTaskSize;
+      }
+
+      & ~ .tasksList__item {
+        margin-top: 15px;
+      }
+    }
+  }
+}
